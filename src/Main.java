@@ -14,5 +14,6 @@ public class Main {
         double rez4 = Linear.Calculate4(123.456);
         System.out.println(rez4);
         System.out.println("10000 sec = "+ Linear.Calculate5(10000));
+        System.out.println("Произведение квадратов: "+ Cycled.Calculate4());
     }
 }

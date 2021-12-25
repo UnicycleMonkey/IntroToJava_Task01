@@ -35,19 +35,19 @@ public class Linear {
     //Дано действительное число R вида nnn.ddd (3 разряда в целой и дробной части).Поменять местами целую и дробную части, вывести число
     public static double Calculate4(double number) {
         final int SYMBOL_COUNT=3; //число переставляемых разрядов
-        int intNumber = (int)number;
-        if (intNumber>=Math.pow(10, SYMBOL_COUNT+1))
+        int integerPart = (int)number;
+        if (integerPart >= Math.pow(10, SYMBOL_COUNT+1))
         {
             throw  new RuntimeException("Number should be nnn.ddd");
         }
-        double fracNumber = number-intNumber;
-        return (int)(fracNumber*Math.pow(10, SYMBOL_COUNT))+ intNumber/Math.pow(10.,SYMBOL_COUNT);
+        double fractionalPart = number-integerPart;
+        return (int)(fractionalPart*Math.pow(10, SYMBOL_COUNT)) + integerPart/Math.pow(10.,SYMBOL_COUNT);
     }
 
     //Перевести секунды в часы:минуты:секунды
-    public static LocalTime Calculate5 (Integer secunds) {
+    public static LocalTime Calculate5 (Integer seconds) {
         LocalTime result = LocalTime.of(0,0, 0);
-        result=result.plusSeconds(secunds);
+        result=result.plusSeconds(seconds);
         return result;
     }
     //Принадлежит ли точка (x,y) закрашенной области
