@@ -1,3 +1,5 @@
+import java.time.LocalTime;
+
 public class Linear {
     // Найти значение выражения  z=((a-3)*b/2)+c
     public static double Calculate1 (double a, double b, double c){
@@ -27,7 +29,7 @@ public class Linear {
         if ( den==0 || Math.cos(x*y)==0){
             throw new RuntimeException("Division by 0");
         }
-        return (Math.sin(x)- Math.cos(y))*Math.tan(x*y)/den;
+        return ((Math.sin(x) + Math.cos(y))/den)*Math.tan(x*y);
     }
 
     //Дано действительное число R вида nnn.ddd (3 разряда в целой и дробной части).Поменять местами целую и дробную части, вывести число
@@ -40,5 +42,11 @@ public class Linear {
         }
         double fracNumber = number-intNumber;
         return (int)(fracNumber*Math.pow(10, SYMBOL_COUNT))+ intNumber/Math.pow(10.,SYMBOL_COUNT);
+    }
+
+    public static LocalTime Calculate5 (Integer secunds) {
+        LocalTime result = LocalTime.of(0,0, 0);
+        result=result.plusSeconds(secunds);
+        return result;
     }
 }
