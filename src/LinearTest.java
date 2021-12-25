@@ -54,18 +54,26 @@ class LinearTest {
     void calculate5SingleHour() {
         LocalTime result = Linear.Calculate5(3600);
         LocalTime testValue = LocalTime.of (1,0,0);
-        assertTrue(testValue.equals(result));
+        assertEquals(testValue,result);
     }
 
-
+    //Произвольное значение someValue
     @Test
     void calculate5SomeValue() {
-        Integer someValue = 10000;
-        Integer hours = someValue/3600; //целочисленное деление
-        Integer minutes = (someValue/60)%60; //отбрасываем секунды делением, остаток в минуты
-        Integer secunds = someValue%60;
+        int someValue = 10000;
+        int hours = someValue/3600; //целочисленное деление
+        int minutes = (someValue/60)%60; //отбрасываем секунды делением, остаток в минуты
+        int secunds = someValue%60;
         LocalTime result = Linear.Calculate5(someValue);
         LocalTime testValue = LocalTime.of (hours,minutes,secunds);
-        assertTrue(testValue.equals(result));
+        assertEquals(testValue,result);
+    }
+
+    //Принадлежность точек (0,0), (-8,1.5), (1, 2.5)
+    @Test
+    void calculate6Point() {
+        assertTrue(Linear.Calculate6(0,0));
+        assertFalse(Linear.Calculate6(-8, 1.5));
+        assertTrue(Linear.Calculate6(1,2.5));
     }
 }

@@ -34,7 +34,7 @@ public class Linear {
 
     //Дано действительное число R вида nnn.ddd (3 разряда в целой и дробной части).Поменять местами целую и дробную части, вывести число
     public static double Calculate4(double number) {
-        final int SYMBOL_COUNT=3;
+        final int SYMBOL_COUNT=3; //число переставляемых разрядов
         int intNumber = (int)number;
         if (intNumber>=Math.pow(10, SYMBOL_COUNT+1))
         {
@@ -44,9 +44,24 @@ public class Linear {
         return (int)(fracNumber*Math.pow(10, SYMBOL_COUNT))+ intNumber/Math.pow(10.,SYMBOL_COUNT);
     }
 
+    //Перевести секунды в часы:минуты:секунды
     public static LocalTime Calculate5 (Integer secunds) {
         LocalTime result = LocalTime.of(0,0, 0);
         result=result.plusSeconds(secunds);
         return result;
     }
+    //Принадлежит ли точка (x,y) закрашенной области
+    public static boolean Calculate6 (double x, double y){
+        //Задаем закрашенные области вершинами (xl1, yl1), (xr1, yr1) и (xl2, yl2), (xr2, yr2)
+        double xl1 = -2, yl1 = 4;
+        double xr1 = 2, yr1 = 0;
+        double xl2 = -4, yl2 = 0;
+        double xr2 = 4, yr2 = -3;
+        return (PointLaysInRectangle(x, y, xl1, yl1, xr1, yr1) || PointLaysInRectangle(x, y, xl2, yl2, xr2, yr2));
+    }
+    //Приватный статический метод, определяющий, лежит ли точка в прямоугольнике, заданном левой верхней (xl, yl) и правой нижней (xr, yr) вершинами
+    private static boolean PointLaysInRectangle(double x, double y, double xl, double yl, double xr, double yr) {
+        return ((x>=xl && x<=xr) && (y<=yl && y>=yr));
+    }
+
 }
